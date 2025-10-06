@@ -35,7 +35,7 @@ SLEEP_SECONDS = 3600  # 1 hour
 with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
     server.login(EMAIL, PASSWORD)
 
-    for batch_start in range(0 + BATCH_SIZE, len(df), BATCH_SIZE):
+    for batch_start in range(0 + BATCH_SIZE * 2, len(df), BATCH_SIZE):
         batch = df.iloc[batch_start:batch_start + BATCH_SIZE]
         for idx, row in batch.iterrows():
             email = row['Email']
