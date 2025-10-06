@@ -21,7 +21,7 @@ PASSWORD = '4wVSnD_Gxzc5Zw4'           # Use app password if needed
 
 message = """Dear participants,
 
-Please find your AI4Science certificate of attendance.
+Please find your AI4Science certificate of attendance attached.
 
 Best regards,
 AI4Science team
@@ -53,7 +53,7 @@ with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
 
             # Compose email
             msg = EmailMessage()
-            msg['Subject'] = "Your Personalized Document"
+            msg['Subject'] = "AI4Science certificate of attendance"
             msg['From'] = EMAIL
             msg['To'] = email
             msg.set_content(message)
