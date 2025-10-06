@@ -7,10 +7,10 @@ import time
 
 
 # Load participant data
-df = pd.read_csv('data.csv', delimiter=";")  # Assumes a column 'email'
+df = pd.read_csv('data_final.csv', delimiter=",")  # Assumes a column 'email'
 
 # Read the PDF
-reader = PdfReader('test.pdf')
+reader = PdfReader('final cetificates.pdf')
 
 # SMTP setup
 SMTP_SERVER = 'mail.ai4science.si'  # Replace with your SMTP server
@@ -32,16 +32,13 @@ AI4Science team
 BATCH_SIZE = 30
 SLEEP_SECONDS = 3600  # 1 hour
 
-BATCH_SIZE = 3
-SLEEP_SECONDS = 60  # 1 hour
-
 with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
     server.login(EMAIL, PASSWORD)
 
     for batch_start in range(0, len(df), BATCH_SIZE):
         batch = df.iloc[batch_start:batch_start + BATCH_SIZE]
         for idx, row in batch.iterrows():
-            email = row['mail']
+            email = row['Email']
             name = row.get('Name', '')
 
             # Extract the corresponding PDF page
